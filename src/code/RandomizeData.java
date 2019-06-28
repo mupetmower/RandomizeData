@@ -72,7 +72,7 @@ public class RandomizeData {
 			
 			startTime = System.currentTimeMillis();
 			//RandomData[] randomData = mock.doPost();
-			RandomData[] randomData = mock.getFromFile("C:\\Users\\af86590\\Downloads\\randomdata.json");
+			RandomData[] randomData = mock.getFromDefaultFile();
 			duration = System.currentTimeMillis() - startTime;
 			System.out.println(String.format("Time(in ms) to retrieve and instantiate %d Mock Records: %d", numRand, duration));
 			
