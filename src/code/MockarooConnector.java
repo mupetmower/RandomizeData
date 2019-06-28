@@ -58,8 +58,8 @@ public class MockarooConnector {
 
 	public RandomData[] getFromDefaultFile() throws JsonParseException, JsonMappingException, IOException {
 		ClassLoader classLoader = getClass().getClassLoader();
-		File file = new File(classLoader.getResource("resources/randomdata.json").getFile());
-		return getFromFile(file);
+		InputStream in = classLoader.getResourceAsStream("resources/randomdata.json");
+		return getFromStream(in);
 	}
 	
 	public RandomData[] getFromFile(String filePath) throws JsonParseException, JsonMappingException, IOException {
@@ -76,7 +76,17 @@ public class MockarooConnector {
 		randomData = mockData;
 		return mockData;
 	}
-	
+
+	public RandomData[] getFromStream(InputStream in) throws JsonParseException, JsonMappingException, IOException {
+		long startTime = System.currentTimeMillis();
+		ObjectMapper om = new ObjectMapper();
+		RandomData[] mockData = om.readValue(in, RandomData[].class);
+		long duration = System.currentTimeMillis() - startTime;
+		System.out.println(String.format("Time(in ms) to instantiate %d Mockaroo objects from File: %d", mockData.length, duration));
+
+		randomData = mockData;
+		return mockData;
+	}
 	
 	public RandomData[] doPost() throws Exception {
 		if (url == null) throw new Exception("No Url.");
