@@ -51,4 +51,4 @@ There is a file put into src/resources called **randomdata.json** which is used 
 
 
 ## NOTES
-- For now, do not run this program for any address/location columns. These will be done seperately. The reason for this is because we want the location information to all match on one record. If we update the records per column, then the data will not match and you could have city, state, and zip that do not go together. So these will be ran seperately with a change to the program.
+- For now, do not run this program for any address/location columns if the table has more than one location-type column. These will be done seperately. The reason for this is because we want the location information to all match on one record. If we update the records per column, then the data will not match and you could have city, state, and zip that do not go together. So these will be ran seperately with a change to the program.
