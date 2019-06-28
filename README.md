@@ -24,26 +24,26 @@ There is a file put into src/resources called **randomdata.json** which is used 
 **POST URL:**     https://api.mockaroo.com/api/dbc87e30?count=1000&key=f7b4bd00
 
 **Columns:**
-firstName
-lastName
-dob
-email
-ssn
-phone
-username
-password
-streetAddress
-addrLine2
-city
-state
-zip
-sentence
-company
-bankAccount
-nums10
-nums5
-url
+- firstName
+- lastName
+- dob
+- email
+- ssn
+- phone
+- username
+- password
+- streetAddress
+- addrLine2
+- city
+- state
+- zip
+- sentence
+- company
+- bankAccount
+- nums10
+- nums5
+- url
 
 **Columns not in default File yet:**
-department
-ipaddress
+- department
+- ipaddress
