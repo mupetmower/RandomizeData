@@ -20,7 +20,8 @@ Once .jar is built, this is how to run the program for now:
 There is a file put into src/resources called **randomdata.json** which is used in the program as a default file to use for now. It contains 30k mock records in json format. For now, the program is set to use only this default file since the Free version of mockaroo only allows 5k records at a time. Also, since this program is currently setup to run once per column, and since some tables in our databases have over 1 million rows (some much more), it takes far too long to generate all of that mock data each time for each column.
 
 
-**SCHEMA NAME**   randomdata
+**SCHEMA NAME:**   randomdata
+
 **POST URL:**     https://api.mockaroo.com/api/dbc87e30?count=1000&key=f7b4bd00
 
 **Columns:**
