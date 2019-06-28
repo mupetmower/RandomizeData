@@ -43,9 +43,11 @@ public class RandomizeData {
 			String table, String idCol, String column, String randomType, int truncateLength) {
 		try {
 			DBConnector db = new DBConnector(DBConnector.getDBTypeFromString(dbType), dbHost, dbName, dbUsername, dbPassword);
-			
+
+			boolean isTextType = randomType.trim().toLowerCase().equals("sentence");
+
 			long startTime = System.currentTimeMillis();
-			List<Object> ids = db.retrieveIds(table, idCol, column);
+			List<Object> ids = db.retrieveIds(table, idCol, column, isTextType);
 			int idCount = ids.size();
 			long duration = System.currentTimeMillis() - startTime;
 			System.out.println(String.format("Time(in ms) to retrieve %d Ids: %d", idCount, duration));

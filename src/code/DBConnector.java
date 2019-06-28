@@ -34,6 +34,7 @@ public class DBConnector {
 	
 	private final String GENERIC_UPDATE = "update %s set %s = ? where %s = ?;";
 	private final String SELECT_IDS_NONNULL = "select %s from %s where %s is not null and %s != '';";
+	private final String SELECT_IDS_NONNULL_TEXT = "select %s from %s where %s is not null and %s not like '';";
 	
 	private final String UPDATE = " update %s ";
 	private final String SET = " set %s = ? ";
@@ -102,10 +103,14 @@ public class DBConnector {
 		return updateBatch.executeBatch();
 	}
 	
-	public List<Object> retrieveIds(String tableName, String idCol, String colToChange) throws SQLException {
+	public List<Object> retrieveIds(String tableName, String idCol, String colToChange, boolean isTextType) throws SQLException {
 		List<Object> ids = new ArrayList<Object>();
-		PreparedStatement stmt = con.prepareStatement(String.format(SELECT_IDS_NONNULL, idCol, tableName, colToChange, colToChange));
-		System.out.println("RetrieveIds SQL: " + String.format(SELECT_IDS_NONNULL, idCol, tableName, colToChange, colToChange));
+		String sql = SELECT_IDS_NONNULL;
+		if (isTextType) {
+			sql = SELECT_IDS_NONNULL_TEXT;
+		}
+		PreparedStatement stmt = con.prepareStatement(String.format(sql, idCol, tableName, colToChange, colToChange));
+		System.out.println("RetrieveIds SQL: " + String.format(sql, idCol, tableName, colToChange, colToChange));
 		
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()) {
