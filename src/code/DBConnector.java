@@ -114,7 +114,7 @@ public class DBConnector {
 		
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()) {
-			ids.add(rs.getInt(1));
+			ids.add(rs.getObject(1));
 		}
 		rs.close();
 		return ids;
