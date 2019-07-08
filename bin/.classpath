@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_181"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Innoprise/cis/jboss-4.0.3SP1/server/default/lib/mysql-connector-java-5.1.36.jar"/>
+	<classpathentry kind="lib" path="C:/Innoprise/cis/jboss-4.0.3SP1/server/default/lib/jtds-1.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/af86590/Documents/jackson-databind/jackson-databind-2.9.9.jar" sourcepath="C:/Users/af86590/Documents/jackson-databind/jackson-databind-2.9.9-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Users/af86590/Documents/jackson-databind/jackson-databind-2.9.9-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/af86590/Documents/jackson-databind/jackson-annotations-2.9.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/af86590/Documents/jackson-databind/jackson-core-2.9.9.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

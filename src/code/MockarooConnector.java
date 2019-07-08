@@ -130,7 +130,10 @@ public class MockarooConnector {
 		randomData = mockData;
 		return mockData;
 	}
-	
+
+	public int getRandomIndex() {
+		return rand.nextInt(NUM_RECORDS_IN_FILE-5); //-5 just for now to be safe.
+	}
 	
 	public Object getColumnRandom(String randomDataType) {
 		int index = rand.nextInt(NUM_RECORDS_IN_FILE-5); //-5 just for now to be safe.
@@ -145,7 +148,9 @@ public class MockarooConnector {
 	public Object getColumn(String randomDataType, int index) {
 		return getColumn(randomDataType, index, -1);
 	}
-	
+
+
+	//change types to enum
 	public Object getColumn(String randomDataType, int index, int truncateLength) {
 		switch (randomDataType.trim().toLowerCase()) {
 			case "firstname":				
