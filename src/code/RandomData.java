@@ -14,6 +14,7 @@ public class RandomData {
 	private String addrLine2;
 	private String city;
 	private String state;
+	private String stateAbbrv;
 	private String zip;
 	private String sentence;
 	private String company;
@@ -21,14 +22,16 @@ public class RandomData {
 	private String nums10;
 	private String nums5;
 	private String url;
+	private String department;
+	private String ipaddress;
 	//private String urlLong;	
 	
 	
 	public RandomData() {}
 	
 	public RandomData(String firstName, String lastName, String dob, String email, String ssn, String phone, String username,
-			String password, String streetAddress, String addrLine2, String city, String state, String zip,
-			String sentence, String company, String bankAccount, String nums10, String nums5, String url) {
+			String password, String streetAddress, String addrLine2, String city, String state, String stateAbbrv, String zip,
+			String sentence, String company, String bankAccount, String nums10, String nums5, String url, String department, String ipaddress) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dob = dob;
@@ -41,6 +44,7 @@ public class RandomData {
 		this.addrLine2 = addrLine2;
 		this.city = city;
 		this.state = state;
+		this.stateAbbrv = stateAbbrv;
 		this.zip = zip;
 		this.sentence = sentence;
 		this.company = company;
@@ -48,6 +52,8 @@ public class RandomData {
 		this.nums10 = nums10;
 		this.nums5 = nums5;
 		this.url = url;
+		this.department = department;
+		this.ipaddress = ipaddress;
 		//this.urlLong = urlLong;
 	}
 
@@ -154,6 +160,14 @@ public class RandomData {
 		this.state = state;
 	}
 
+	public String getStateAbbrv() {
+		return stateAbbrv;
+	}
+
+	public void setStateAbbrv(String stateAbbrv) {
+		this.stateAbbrv = stateAbbrv;
+	}
+
 	public String getZip() {
 		return zip;
 	}
@@ -224,8 +238,20 @@ public class RandomData {
 	public void setUrlLong(String urlLong) {
 		this.urlLong = urlLong;
 	}*/
-	
-	
-	
-	
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
+	public String getIpaddress() {
+		return ipaddress;
+	}
+
+	public void setIpaddress(String ipaddress) {
+		this.ipaddress = ipaddress;
+	}
 }

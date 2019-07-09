@@ -30,7 +30,7 @@ public class MockarooConnector {
 		
 	private RandomData[] randomData;
 	
-	public static final int NUM_RECORDS_IN_FILE = 30000;
+	public static final int NUM_RECORDS_IN_FILE = 31000;
 	private Random rand;
 	
 	public MockarooConnector(int numRecords) throws MalformedURLException {
@@ -177,6 +177,8 @@ public class MockarooConnector {
 				return randomData[index].getCity();
 			case "state":				
 				return randomData[index].getState();
+			case "stateabbrv":
+				return randomData[index].getStateAbbrv();
 			case "zip":				
 				return randomData[index].getZip();
 			case "sentence":	
@@ -194,6 +196,10 @@ public class MockarooConnector {
 				return randomData[index].getNums5();
 			case "url":				
 				return randomData[index].getUrl();
+			case "department":
+				return randomData[index].getDepartment();
+			case "ipaddress":
+				return randomData[index].getIpaddress();
 			case "fullname":
 				return randomData[index].getFullName();
 			default:

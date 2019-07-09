@@ -33,13 +33,13 @@ public class DBConnector {
 	private final String UPDATE_CP_NAME = "update commonparty set name = ? where commonparty_id = ?;";
 	
 	private final String GENERIC_UPDATE = "update %s set %s = ? where %s = ?;";
-	private final String GENERIC_UPDATE_MULTICOL = "update %s set %s = ? where %s = ? and %s is not null;";
-	private final String GENERIC_UPDATE_MULTICOL_TEXT = "update %s set %s = ? where %s = ? and %s not like '';";
+	private final String GENERIC_UPDATE_MULTICOL = "update %s set %s = ? where %s = ? and %s is not null and %s != '';";
+	private final String GENERIC_UPDATE_MULTICOL_TEXT = "update %s set %s = ? where %s = ? and %s is not null and %s not like '';";
 	private final String SELECT_IDS_NONNULL = "select %s from %s where %s is not null and %s != '';";
 	private final String SELECT_IDS_NONNULL_TEXT = "select %s from %s where %s is not null and %s not like '';";
 	private final String SELECT_IDS_MULTICOL = "select %s from %s where ( %s );";
-	private final String MULTICOL_NONNULL = "%s is not null";
-	private final String MULTICOL_NONNULL_TEXT = "%s not like ''";
+	private final String MULTICOL_NONNULL = "( %s is not null and %s != '' )";
+	private final String MULTICOL_NONNULL_TEXT = "( %s is not null and %s not like '' )";
 	private final String OR = " or ";
 	
 	private final String UPDATE = " update %s ";
@@ -155,7 +155,7 @@ public class DBConnector {
 			if (item.getValue().trim().toLowerCase().equals("sentence"))
 				col = MULTICOL_NONNULL_TEXT;
 
-			sqlWhere.append(String.format(col, item.getKey()));
+			sqlWhere.append(String.format(col, item.getKey(), item.getKey()));
 			i++;
 		}
 
@@ -173,18 +173,23 @@ public class DBConnector {
 	
 	public void prepUpdateBatch(String tableName, String idCol, String colToChange) throws Exception {
 		if (dbName == null) throw new Exception("No id column.");
-		updateBatch = con.prepareStatement(String.format(GENERIC_UPDATE, tableName, colToChange, idCol));
+		String sql = String.format(GENERIC_UPDATE, tableName, colToChange, idCol);
+		updateBatch = con.prepareStatement(sql);
+		System.out.println("UpdateBatch SQL: " + sql);
 	}
 
 	public void prepUpdateBatches(String tableName, String idCol, Map<String, String> colsToChange) throws Exception {
 		if (dbName == null) throw new Exception("No id column.");
 		for (Map.Entry<String, String> item : colsToChange.entrySet()) {
 			String col = item.getKey();
+			String sql = "";
 			if (item.getValue().trim().toLowerCase().equals("sentence")) {
-				updateBatches.put(col, con.prepareStatement(String.format(GENERIC_UPDATE_MULTICOL_TEXT, tableName, col, idCol, col)));
+				sql = String.format(GENERIC_UPDATE_MULTICOL_TEXT, tableName, col, idCol, col, col);
 			} else {
-				updateBatches.put(col, con.prepareStatement(String.format(GENERIC_UPDATE_MULTICOL, tableName, col, idCol, col)));
+				sql = String.format(GENERIC_UPDATE_MULTICOL, tableName, col, idCol, col, col);
 			}
+			updateBatches.put(col, con.prepareStatement(sql));
+			System.out.println("UpdateBatch SQL: " + sql);
 		}
 	}
 	

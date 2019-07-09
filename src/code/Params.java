@@ -52,9 +52,9 @@ public class Params {
                 if (truncateStr.equals("-t")) {
                     truncateStr = args[++i];
                 } else if (truncateStr.startsWith("-t") && truncateStr.length() > 2) {
-                    truncateStr = truncateStr.substring(2, truncateStr.length());
+                    truncateStr = truncateStr.substring(2);
                 } else {
-                    truncateLength = -1;
+                    truncateStr = "-1";
                 }
 
                 try {
@@ -78,7 +78,7 @@ public class Params {
                         truncateStr = args[++i];
                     } else if (truncateStr.startsWith("-t") && truncateStr.length() > 2) {
                         isTruncated = true;
-                        truncateStr = truncateStr.substring(2, truncateStr.length());
+                        truncateStr = truncateStr.substring(2);
                     }
 
                     if (isTruncated) {
